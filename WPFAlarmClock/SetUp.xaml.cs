@@ -22,6 +22,10 @@ namespace WPFAlarmClock
         public SetUp()
         {
             InitializeComponent();
+
+            this.btn_Min.Click += Btn_Min_Click;
+            this.btn_Max.Click += Btn_Max_Click;
+            this.btn_Close.Click += Btn_Close_Click;
         }
 
         /// <summary>
@@ -62,5 +66,25 @@ namespace WPFAlarmClock
             lbxClock.Items.Add(newClock);
             //lbxClock.Items.Remove(user1);
         }
+
+
+
+
+
+        private void Btn_Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Btn_Max_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized == this.WindowState ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void Btn_Min_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
     }
 }

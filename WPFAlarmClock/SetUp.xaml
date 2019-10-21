@@ -5,16 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAlarmClock"
         mc:Ignorable="d"
+        x:Name="Setup"
         Title="SetUp" Height="500" Width="1200"
-        WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"
+        Style="{DynamicResource WindowStyle2}"
         AllowsTransparency="True" WindowStyle="None" ResizeMode="CanResizeWithGrip">
-
+    <!--WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"-->
     <Window.Resources>
-        <WindowChrome x:Key="WindowChromeKey">
-            <WindowChrome.ResizeBorderThickness>
-                <Thickness>5</Thickness>
-            </WindowChrome.ResizeBorderThickness>
-        </WindowChrome>
+
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -74,11 +71,36 @@
                                 <Setter TargetName="image" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="Tag" Value="BtnDel">
-                                <Setter TargetName="image" Property="Source" Value="齿轮.png"/>
+                                <Setter TargetName="image" Property="Source" Value="image/齿轮.png"/>
                                 <Setter TargetName="image" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="Tag" Value="txt">
                                 <Setter TargetName="contentPresenter" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+         <!--完全自定义-->
+        <Style x:Key="WindowStyle2" TargetType="{x:Type Window}">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome UseAeroCaptionButtons="False" GlassFrameThickness="0" CaptionHeight="30"  />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"  >
+                            <AdornerDecorator >
+                                <ContentPresenter x:Name="win_content" />
+                            </AdornerDecorator>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="WindowState" Value="Maximized">
+                                <Setter Property="Margin" TargetName="win_content" Value="8"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -93,12 +115,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Image Stretch="UniformToFill" Grid.RowSpan="2" Source="SetupBack.png"/>
-        <DockPanel Height="30" MouseMove="TitleBar_MouseMove" MouseDown="TitleBar_MouseDown" Background="#4C9CFB" Opacity="0.8" DockPanel.Dock="Top">
-            <TextBlock Name="txtTitle" Margin="1,0,0,0"  Padding="5,3,2,3" Text="闹钟设置" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontFamily="微软雅黑"  
-                   Foreground="White"/>
-            <Button Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Right" Content="x"/>
-        </DockPanel>
+
+        <Grid Background="#4C9CFB" Opacity="0.8">
+            <Grid Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <TextBlock Name="txtTitle" Margin="1,0,0,0"  Padding="5,3,2,3" Text="闹钟设置" FontSize="14" FontFamily="微软雅黑"  Foreground="White"/>
+                <StackPanel Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" >
+                    <Button Margin="1" Width="24" Height="24" Name="btn_Min" Content="—" ></Button>
+                    <Button Margin="1" Width="24" Height="24" Name="btn_Max" Content="☐" ></Button>
+                    <Button Margin="1" Width="24" Height="24" Name="btn_Close" Content="✕" ></Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
         <ScrollViewer Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -121,7 +149,7 @@
 
                 <StackPanel Grid.Row="3" Orientation="Horizontal">
                     <TextBlock Text="默认铃声" Height="50" FontSize="36"/>
-                    <Button Height="30" Tag="BtnDel" Width="120" Style="{DynamicResource ButtonStyle1}"/>
+                    <Button Height="30" Tag="BtnDel" Style="{DynamicResource ButtonStyle1}"/>
                 </StackPanel>
 
                 <GridSplitter Grid.Row="3"></GridSplitter>

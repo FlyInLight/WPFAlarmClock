@@ -109,16 +109,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="闹钟04.png" />
+    <Resource Include="image\闹钟04.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="齿轮.png" />
+    <Resource Include="image\齿轮.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="7987.mp3" />
     <Resource Include="image\添加.png" />
-    <Resource Include="删除白色.png" />
-    <Resource Include="删除.png" />
+    <Resource Include="image\删除白色.png" />
     <Resource Include="SetupBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

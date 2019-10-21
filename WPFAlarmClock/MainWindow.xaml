@@ -11,7 +11,7 @@
         OpacityMask="White" 
         Background="Transparent">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
-        <Image Source="闹钟04.png"/>
+        <Image Source="image/闹钟04.png"/>
         <!-- 秒针定义  -->
         <Grid>
             <Rectangle Margin="268.5,25,266.5,150" Height="120" HorizontalAlignment="Center" VerticalAlignment="Center" Name="rectangleSecond" Fill="Red" Stroke="Red"  Width="3">
@@ -41,7 +41,7 @@
 
         <Button Click="BtnSetUp_Click" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
             <Button.Content>
-                <Image Source="齿轮.png"/>
+                <Image Source="image/齿轮.png"/>
             </Button.Content>
         </Button>
  
